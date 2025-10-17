@@ -1,10 +1,12 @@
 package dev.darshan.hospitalsys.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 
 @Entity
+@Data
 public class Patient {
 
     @Id
