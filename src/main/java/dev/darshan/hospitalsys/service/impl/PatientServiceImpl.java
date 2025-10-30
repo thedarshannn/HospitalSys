@@ -22,4 +22,11 @@ public class PatientServiceImpl implements PatientService {
         List<Patient> patients = patientRepo.findAll();
         return patientMapper.toDtoList(patients);
     }
+
+    @Override
+    public PatientDto getPatientById(Integer id) {
+        Patient res = patientRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Patient Not Found"));
+        return patientMapper.toDto(res);
+    }
 }
