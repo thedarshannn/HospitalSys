@@ -11,19 +11,25 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer patient_id;
+    @Column(name = "patient_id")
+    private Integer patientId;
 
-    private String first_name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    private String last_name;
+    @Column(name = "last_name")
+    private String lastName;
 
-    private LocalDate date_of_birth;
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
 
     private String gender;
 
-    private String phone_number;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     private String address;
 
-    private Integer insurance_id;
+    @Column(name = "insurance_id")
+    private Integer insuranceId;
 }

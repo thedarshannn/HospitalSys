@@ -29,4 +29,11 @@ public class PatientServiceImpl implements PatientService {
                 .orElseThrow(() -> new IllegalArgumentException("Patient Not Found"));
         return patientMapper.toDto(res);
     }
+
+    @Override
+    public PatientDto addPatient(PatientDto reqPatientDto) {
+        Patient patient = patientMapper.toEntity(reqPatientDto);
+        patientRepo.save(patient);
+        return patientMapper.toDto(patient);
+    }
 }
