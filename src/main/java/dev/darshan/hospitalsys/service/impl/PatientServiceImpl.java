@@ -54,4 +54,11 @@ public class PatientServiceImpl implements PatientService {
         return patientMapper.toDto(saved);
     }
 
+    @Override
+    public void deletePatientById(int id) {
+        patientRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with ID: " + id));
+        patientRepo.deleteById(id);
+    }
+
 }

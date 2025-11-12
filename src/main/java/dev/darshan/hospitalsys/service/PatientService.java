@@ -15,4 +15,6 @@ public interface PatientService {
     PatientDto addPatient(@Valid PatientDto reqPatientDto);
 
     PatientDto updatePatient(Integer id, @Valid PatientDto updatePatientDto);
+
+    void deletePatientById(int id);
 }
