@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DoctorService {
     List<DoctorDto> getAllDoctors();
+
+    DoctorDto getDoctorById(int i);
 }
