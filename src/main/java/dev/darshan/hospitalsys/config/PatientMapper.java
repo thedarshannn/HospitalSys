@@ -14,5 +14,4 @@ public interface PatientMapper {
     Patient toEntity(PatientDto dto);
     List<PatientDto> toDtoList(List<Patient> patients);
 
-    void updatePatientFromDto(PatientDto dto, @MappingTarget Patient entity);
 }
