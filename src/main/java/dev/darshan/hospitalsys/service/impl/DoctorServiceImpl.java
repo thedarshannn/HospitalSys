@@ -31,4 +31,22 @@ public class DoctorServiceImpl implements DoctorService {
                 .orElseThrow(() -> new IllegalArgumentException("Doctor Not Found"));
         return doctorMapper.toDoctorDto(res);
     }
+
+    @Override
+    public DoctorDto addDoctor(DoctorDto reqDoctorDto) {
+        Doctor res = doctorMapper.toDoctor(reqDoctorDto);
+        doctorRepo.save(res);
+        return doctorMapper.toDoctorDto(res);
+    }
+
+    @Override
+    public DoctorDto updateDoctor(int id, DoctorDto updatedDoctorDto) {
+        Doctor exiting = doctorRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Doctor Not Found"));
+
+        Doctor updated = doctorMapper.toDoctor(updatedDoctorDto);
+        updated.setDoctorId(exiting.getDoctorId());
+        doctorRepo.save(updated);
+        return doctorMapper.toDoctorDto(updated);
+    }
 }
