@@ -17,4 +17,6 @@ public interface PatientService {
     PatientDto updatePatient(Integer id, @Valid PatientDto updatePatientDto);
 
     void deletePatientById(int id);
+
+    List<PatientDto> getPatientByName(String name);
 }

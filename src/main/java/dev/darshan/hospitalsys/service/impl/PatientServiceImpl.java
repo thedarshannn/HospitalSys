@@ -61,4 +61,10 @@ public class PatientServiceImpl implements PatientService {
         patientRepo.deleteById(id);
     }
 
+    @Override
+    public List<PatientDto> getPatientByName(String name) {
+        List<Patient> patients = patientRepo.findByFirstName(name);
+        return patientMapper.toDtoList(patients);
+    }
+
 }

@@ -42,4 +42,9 @@ public class PatientController {
         patientService.deletePatientById(Integer.parseInt(id));
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<PatientDto>> searchPatientByName(@RequestParam String name) {
+        return ResponseEntity.ok(patientService.getPatientByName(name));
+    }
 }
