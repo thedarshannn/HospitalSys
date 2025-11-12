@@ -31,4 +31,9 @@ public class PatientController {
     public ResponseEntity<PatientDto> createPatient(@RequestBody @Valid PatientDto reqPatientDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(patientService.addPatient(reqPatientDto));
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<PatientDto> updatePatient(@PathVariable String id,@RequestBody @Valid PatientDto updatePatientDto) {
+        return ResponseEntity.ok(patientService.updatePatient(Integer.parseInt(id), updatePatientDto));
+    }
 }

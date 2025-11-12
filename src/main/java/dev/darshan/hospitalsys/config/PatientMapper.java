@@ -3,6 +3,7 @@ package dev.darshan.hospitalsys.config;
 import dev.darshan.hospitalsys.model.dto.PatientDto;
 import dev.darshan.hospitalsys.model.entity.Patient;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface PatientMapper {
     PatientDto toDto(Patient patient);
     Patient toEntity(PatientDto dto);
     List<PatientDto> toDtoList(List<Patient> patients);
+
+    void updatePatientFromDto(PatientDto dto, @MappingTarget Patient entity);
 }

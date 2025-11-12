@@ -36,4 +36,22 @@ public class PatientServiceImpl implements PatientService {
         patientRepo.save(patient);
         return patientMapper.toDto(patient);
     }
+
+    @Override
+    public PatientDto updatePatient(Integer id, PatientDto updatePatientDto) {
+        Patient existing = patientRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with ID: " + id));
+
+        // MapStruct only copies from DTO to Entity — so we reuse it here
+        Patient updated = patientMapper.toEntity(updatePatientDto);
+
+        // Ensure ID stays the same
+        updated.setPatientId(existing.getPatientId());
+
+        // Now save the updated entity
+        Patient saved = patientRepo.save(updated);
+
+        return patientMapper.toDto(saved);
+    }
+
 }
